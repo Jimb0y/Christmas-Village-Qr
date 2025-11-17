@@ -9,9 +9,13 @@ body {
     color: white;
     font-family: Arial;
     text-align: center;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 #gift {
-    width: 120px;
+    width: 100px;
     cursor: pointer;
     position: absolute;
 }
@@ -24,26 +28,49 @@ body {
 <p>Tap the moving gift to score a point!</p>
 
 <h2>Score: <span id="score">0</span></h2>
+<h2>Time Left: <span id="timer">20</span> sec</h2>
 
-<img id="gift" src="https://i.imgur.com/yU0mPgi.png">
+<img id="gift" src="img/gift.png">
 
 <script>
 let score = 0;
+let timeLeft = 20; // 20 seconds
+let timerRunning = true;
+
 const gift = document.getElementById("gift");
+const scoreDisplay = document.getElementById("score");
+const timerDisplay = document.getElementById("timer");
 
 function moveGift() {
-    const x = Math.random() * (window.innerWidth - 150);
-    const y = Math.random() * (window.innerHeight - 150);
+    const maxX = window.innerWidth - gift.offsetWidth;
+    const maxY = window.innerHeight - gift.offsetHeight;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
     gift.style.left = x + "px";
     gift.style.top = y + "px";
 }
 
+// Gift click handler
 gift.onclick = function() {
+    if (!timerRunning) return; // stop scoring after time is up
     score++;
-    document.getElementById("score").textContent = score;
+    scoreDisplay.textContent = score;
     moveGift();
 };
 
+// Timer countdown
+const countdown = setInterval(function() {
+    if (timeLeft <= 0) {
+        clearInterval(countdown);
+        timerRunning = false;
+        alert("Time's up! Your final score is: " + score);
+        return;
+    }
+    timeLeft--;
+    timerDisplay.textContent = timeLeft;
+}, 1000);
+
+// Start the game
 moveGift();
 </script>
 

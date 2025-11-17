@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jokes & Trivia</title>
+<style>
+body {
+    background: #2a1f3d;
+    color: white;
+    font-family: Arial;
+    padding: 20px;
+}
+.joke {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+h1 { text-align: center; }
+
+/* Add Joke Section */
+#add-section {
+    margin-top: 40px;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#newJoke {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #ffcc00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e0b400;
+}
+</style>
+</head>
+<body>
+
+<h1>😂 Tech Jokes & Christmas Trivia 🎄</h1>
+
+<!-- YOUR JOKES HERE -->
+<div class="joke">💻 Why did Santa become a programmer?  
+Because he had lots of **helpers**! 🤶🧑‍💻</div>
+
+<div class="joke">🎅 What’s Santa’s favorite coding language?  
+**Ho-Ho-HTML!** 😆</div>
+
+<div class="joke">🎄 Since Christmas is the season of giving…  
+give me your **heart** instead. ❤️✨</div>
+
+<div class="joke">🎁 Since Christmas is coming soon,  
+I hope Santa brings me **you** as a gift. 😌💝</div>
+
+<div class="joke">🎤 Mariah Carey ka ba?  
+Kasi **All I want for Christmas is YOUUUUU!** 🎶😍</div>
+
+<div class="joke">📸 Can I take a picture of you?  
+I'm just gonna show Santa what I want for Christmas. 😳🎅</div>
+
+<div class="joke">✨ Bakit pa bibili ng Christmas lights,  
+kung pwede naman **ako** ang maging ilaw ng Pasko mo? 😏💡</div>
+
+<div class="joke">🎄 Mawawala mga pandak,  
+kasi need ni Santa mga **dwarf** niya para tumulong mambalot ng gift. 😂</div>
+
+<div class="joke">🤖 Tech Joke:  
+Why do programmers prefer dark mode?  
+Because **light attracts bugs!** 🐛💡</div>
+
+<div class="joke">🧑‍💻 What do you call a computer that sings Christmas songs?  
+A **Dell-ting Bells!** 🎵😆</div>
+
+<div class="joke">🎄 Trivia:  
+Did you know?  
+The first artificial Christmas tree was made of **dyed goose feathers**! 🪶</div>
+
+<div class="joke">🎅 Trivia:  
+Santa Claus was originally dressed in **green**, not red! 🍀  
+(He became red because of Coca-Cola ads.)</div>
+
+<div class="joke">📱 Tech Trivia:  
+The first-ever text message sent in 1992 said:  
+**"Merry Christmas"** 🎄💬</div>
+
+<div class="joke">🎁 Pickup Line:  
+Christmas ka ba?  
+Kasi kahit ang lamig ng panahon…  
+**ikaw pa rin ang init ng puso ko.** ❤️🔥</div>
+
+<div class="joke">✨ Pickup Line:  
+Kung Christmas lights ako…  
+sasayaw lang ako kapag **ikaw** ang kasama ko. 💡🤭</div>
+
+<div class="joke">🧑‍🎄 Joke:  
+Why did the Christmas tree get a job in IT?  
+Because it was **rooted** in programming! 🌲🖥️</div>
+
+<div class="joke">😂 Joke:  
+Ano tawag sa Santa Claus na marunong mag-code?  
+**Santa.exe** 🎅💾</div>
+
+<div class="joke">❤️ Pickup Line:  
+Gift wrapper ka ba?  
+Kasi gusto kitang balutin ng **pagmamahal** ko. 🎁😍</div>
+
+
+<!-- 💛 ADD A JOKE SECTION -->
+<div id="add-section">
+    <h2>➕ Add Your Own Joke 😄</h2>
+    <textarea id="newJoke" rows="3" placeholder="Type your joke here..."></textarea>
+    <button onclick="addJoke()">Add Joke</button>
+</div>
+
+<script>
+function addJoke() {
+    let text = document.getElementById("newJoke").value;
+
+    if (text.trim() === "") {
+        alert("Please type a joke first!");
+        return;
+    }
+
+    // Create a new joke div
+    let newDiv = document.createElement("div");
+    newDiv.className = "joke";
+    newDiv.innerHTML = "😂 " + text;
+
+    // Insert joke at the top
+    document.body.insertBefore(newDiv, document.getElementById("add-section"));
+
+    // Clear textarea
+    document.getElementById("newJoke").value = "";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Anonymous Messages</title>
+<style>
+body {
+    background: #0f222f;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+h1 { text-align: center; }
+#messages { margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.message {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    resize: none;
+    font-size: 16px;
+}
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1abc9c;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover { background-color: #16a085; }
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>🕵️ Anonymous Messages</h1>
+
+<form id="messageForm">
+    <textarea id="msg" rows="3" placeholder="Type your secret message here..."></textarea>
+    <button type="submit">Send</button>
+</form>
+
+<div id="messages"></div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+// Your Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDerRW-ChA9lz_TM9GOE_6Rjtf3r7wgkGU",
+  authDomain: "christmas-village-qr.firebaseapp.com",
+  databaseURL: "https://christmas-village-qr-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "christmas-village-qr",
+  storageBucket: "christmas-village-qr.firebasestorage.app",
+  messagingSenderId: "806414538304",
+  appId: "1:806414538304:web:17581e194ae4a9384f31a5",
+  measurementId: "G-67V5BT3G1S"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const messagesRef = db.ref('messages');
+
+// Listen for new messages and display them
+messagesRef.on('value', (snapshot) => {
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.innerHTML = '';
+    const data = snapshot.val();
+    if(data){
+        Object.values(data).forEach(msg => {
+            const div = document.createElement('div');
+            div.className = 'message';
+            div.textContent = msg.text;
+            messagesDiv.appendChild(div);
+        });
+    }
+});
+
+// Handle form submission
+document.getElementById('messageForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = document.getElementById('msg').value.trim();
+    if(text){
+        messagesRef.push({ text: text });
+        document.getElementById('msg').value = '';
+    }
+});
+</script>
+
+</body>
+</html>

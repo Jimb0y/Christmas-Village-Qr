@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BSIT Christmas Village</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        background: #0a1a2a;
+        color: white;
+        text-align: center;
+    }
+    h1 { font-size: 40px; margin-top: 30px; }
+    .snow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: url('/img/background.jpg');
+        animation: snow 10s linear infinite;
+    }
+    @keyframes snow {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 1000px; }
+    }
+    .btn {
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        margin: 15px auto;
+        padding: 15px;
+        background: #ff0000;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 20px;
+        transition: 0.2s;
+    }
+    .btn:hover { background: #cc0000; }
+</style>
+</head>
+<body>
+
+<div class="snow"></div>
+
+<h1>🎄 BSIT CHRISTMAS VILLAGE 🎄</h1>
+<p>Scan the QR codes around the village to explore our digital world!</p>
+
+<a class="btn" href="greetings.html">Christmas Greetings</a>
+<a class="btn" href="info.html">Structure Information</a>
+<a class="btn" href="videos.html">Video Gallery</a>
+<a class="btn" href="game.html">Mini Game</a>
+<a class="btn" href="jokes.html">Jokes & Trivia</a>
+<a class="btn" href="anonymous.html">Anonymous Messages</a>
+
+</body>
+</html>
